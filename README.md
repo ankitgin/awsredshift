@@ -1,0 +1,2 @@
+# awsredshift
+awsredshift script
