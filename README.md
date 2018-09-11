@@ -1,6 +1,6 @@
 # Redshift Encryptor
 
-This script will help you to encrypt your unencrpted cluster based on your requirement. As part of the script, this script will copy your database from a unencrpted cluster to encrpted cluster. You will need to have a fresh encrpted cluster before executing the script. You can also use the SNS service to monitor the progress of the script.
+This script will help you to encrypt your unencrypted Amazon Redshift cluster. As part of the script, this script will copy your database from an unencrypted cluster Amazon Redshift to an encrypted Amazon Redshift cluster as the destination. You will need to have an empty Amazon Redshift cluster with encryption enabled before executing the script. You can also use the SNS service to monitor the progress of the script.
 
 
 ## Setting the environment
@@ -22,40 +22,9 @@ $ git clone https://github.com/#####PATH########
 ```sh
 $ python3 migration.py
 ```
-
+Please also make sure you make the cluster read only during the process i.e. cut all the write inputs.
 Please follow the instructions in the script.
 
-
-## Customer Notes
-
-1. Customer must have a source unencrypted cluster and destination Encrypted cluster with higher or same configuration.
-2. Customers can only migrate one database at a time 
-3. A Customer must create an s3 bucket which will be used to unload and copy cluster data.
-4. Please note that passwords cannot be migrated and hence must be reset once the migration is completed.
-5. Please follow the instructions displayed.
-6. Please enter proper details when prompted for or it may break migration
-7. Please provide an S3 bucket for unload and copy commands, the S3 bucket should be in the same region as the source.
-8. make sure your CLI is configured.
-9. make sure you have installed python 3+ and boto3 installed.
-
-## Limitations
-1. Use new cluster as a destination cluster is recommended to avoid namespace clashes which may result in migration failure.
-
-## Notes
-1. Master user from source will not be copied to the destination as the destination will have its own master user.
-2. We will be creating and deleting a role for this process which will have s3 access, so please do not modify the role while the process is running.
-3. Amazon Simple Storage Service (Amazon S3) log settings are not migrated, so be sure to enable database audit logging on the new cluster.
-Historic information that is stored in STL and SVL tables is not migrated to or retained in the new cluster.
-
-## Point to Remember
-
-1. ALWAYS REMEMBER THAT WE CANNOT CREATE DUPLICATE USERS AND GROUPS, So before migrating the common users in destination cluster will be deleted.
-2. It is a best practice to make sure the destination cluster is new and empty.
-3. And also note that superuser will not be migrated.
-4. Make sure no user in source cluster except master user has the same name as a master user of the destination cluster.
-
-
-Please also make sure you make the cluster read only during the process i.e. cut all the write inputs.
 
 ## Running the script
 
@@ -87,3 +56,17 @@ At the time of restore, Make sure the following properties are the same compared
 - Select the new cluster and choose Manage IAM Roles.
 - From the Available roles, choose the roles associated with the source cluster.
 - Choose Apply changes.
+
+
+## Notes
+
+1. The destination Encrypted cluster should be of higher or same configuration than the source unencrypted cluster.
+2. Only one database can be migrated at a time.
+3. You will need to create an s3 bucket which will be used to unload and copy the cluster data. The S3 bucket should be in the same region as the source.
+4. Please note that passwords cannot be migrated and hence must be reset once the migration is completed. Also, we can not create duplicate users and groups, so before migrating the common users in the destination cluster will be deleted.
+5. Please enter proper details when prompted for or it may break migration
+6. Make sure no user in source cluster except master user has the same name as a master user of the destination cluster.
+7. Master user from source will not be copied to the destination as the destination will have its own master user. Also, superuser will not be migrated.
+8. Historic information that is stored in STL and SVL tables is not migrated to or retained in the new cluster.
+9. Amazon S3 log settings are not migrated, so be sure to enable database audit logging on the new cluster.
+10. It is a best practice to make sure the destination cluster is new and empty.
