@@ -1,4 +1,31 @@
-# awsredshift
+# On Demand Redshift
+
+This script will help you to encrypt your unencrpted cluster based on your requirement. As part of the script, this script will copy your database from a unencrpted cluster to encrpted cluster. You will need to have a fresh encrpted cluster before executing the script. You can also use the SNS service to monitor the progress of the script.
+
+
+## Setting the environment
+
+1. Please run the following commands in terminal to install python3 and the necessary dependencies in order to run the script:
+```bash
+sudo yum install python36 postgresql postgresql-devel gcc python36-devel libffi-devel
+curl -O https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py --user
+pip3.6 install PyGreSQL boto3 pytz --user
+```
+
+
+2. Clone the repository using the following command:
+```bash
+git clone https://github.com/#####PATH########
+```
+
+3. Change directory to amazon-redshift-utils/src/#####PATH########/ and run the script “migration.py” using python3.
+```bash
+python3 migration.py
+```
+
+Please follow the instructions in the script.
+
 
 ## Customer Notes
 
@@ -12,10 +39,8 @@
 8. make sure your CLI is configured.
 9. make sure you have installed python 3+ and boto3 installed.
 
-
 ## Limitations
 1.Use new cluster as a destination cluster is recommended to avoid namespace clashes which may result in migration failure.
-
 
 ## Notes
 1. Master user from source will not be copied to the destination as the destination will have its own master user.
@@ -30,10 +55,12 @@ Historic information that is stored in STL and SVL tables is not migrated to or 
 3. And also note that superuser will not be migrated.
 4. Make sure no user in source cluster except master user has the same name as a master user of the destination cluster.
 
+
 Please also make sure you make the cluster read only during the process i.e. cut all the write inputs.
 
+## Running the script
 
-Select your Amazon Redshift cluster, and choose Manage IAM Roles.
+1. Select your Amazon Redshift cluster, and choose Manage IAM Roles.
 Note all IAM roles that are associated with your cluster and save the roles to be used in the new cluster.
 Choose the Details pane of your cluster, and note the following configurations:
 - Node Type
@@ -45,7 +72,7 @@ Choose the Details pane of your cluster, and note the following configurations:
 - Port
 - Publicly accessible
  
-Post Restore
+2. Post Restore
 At the time of restore, Make sure the following properties are the same compared to the source.
 - Node Type
 - Cluster Identifier
@@ -56,9 +83,8 @@ At the time of restore, Make sure the following properties are the same compared
 - Cluster Parameter Group
 - VPC security groups.
  
-Associate IAM roles
+3. Associate IAM roles
 -Open the Amazon Redshift console, and choose Clusters from the navigation pane.
 - Select the new cluster and choose Manage IAM Roles.
 - From the Available roles, choose the roles associated with the source cluster.
 - Choose Apply changes.
-
