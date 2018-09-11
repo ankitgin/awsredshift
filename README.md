@@ -39,7 +39,7 @@ Please follow the instructions in the script.
 9. make sure you have installed python 3+ and boto3 installed.
 
 ## Limitations
-1.Use new cluster as a destination cluster is recommended to avoid namespace clashes which may result in migration failure.
+1. Use new cluster as a destination cluster is recommended to avoid namespace clashes which may result in migration failure.
 
 ## Notes
 1. Master user from source will not be copied to the destination as the destination will have its own master user.
