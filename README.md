@@ -7,7 +7,7 @@ This script will help you to encrypt your unencrypted Amazon Redshift cluster. A
 1. AWS Redshift
 2. AWS IAM
 3. AWS S3
-4. AWS SNS
+4. AWS SNS (Optional)
 
 As resources of these services will be spun, there might be some additional charges for using these services. Please refer the documentation [1] for details about the charges.
 
