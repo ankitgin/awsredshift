@@ -6,11 +6,11 @@ This script will help you to encrypt your unencrpted cluster based on your requi
 ## Setting the environment
 
 1. Please run the following commands in terminal to install python3 and the necessary dependencies in order to run the script:
-```bash
-sudo yum install python36 postgresql postgresql-devel gcc python36-devel libffi-devel
-curl -O https://bootstrap.pypa.io/get-pip.py
-python3 get-pip.py --user
-pip3.6 install PyGreSQL boto3 pytz --user
+```sh
+$ sudo yum install python36 postgresql postgresql-devel gcc python36-devel libffi-devel
+$ curl -O https://bootstrap.pypa.io/get-pip.py
+$ python3 get-pip.py --user
+$ pip3.6 install PyGreSQL boto3 pytz --user
 ```
 
 
