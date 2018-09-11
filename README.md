@@ -1,4 +1,4 @@
-# On Demand Redshift
+# Redshift Encryptor
 
 This script will help you to encrypt your unencrpted cluster based on your requirement. As part of the script, this script will copy your database from a unencrpted cluster to encrpted cluster. You will need to have a fresh encrpted cluster before executing the script. You can also use the SNS service to monitor the progress of the script.
 
