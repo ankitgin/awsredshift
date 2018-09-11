@@ -15,12 +15,12 @@ $ pip3.6 install PyGreSQL boto3 pytz --user
 
 
 2. Clone the repository using the following command:
-```bash
+```sh
 git clone https://github.com/#####PATH########
 ```
 
 3. Change directory to amazon-redshift-utils/src/#####PATH########/ and run the script “migration.py” using python3.
-```bash
+```sh
 python3 migration.py
 ```
 
