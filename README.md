@@ -2,6 +2,14 @@
 
 This script will help you to encrypt your unencrypted Amazon Redshift cluster. As part of the script, this script will copy your database from an unencrypted cluster Amazon Redshift to an encrypted Amazon Redshift cluster as the destination. You will need to have an empty Amazon Redshift cluster with encryption enabled before executing the script. You can also use the SNS service to monitor the progress of the script.
 
+## AWS Services involved in the script
+
+1. AWS Redshift
+2. AWS IAM
+3. AWS S3
+4. AWS SNS
+
+As resources of these services will be spun, there might be some additional charges for using these services. Please refer the documentation [1] for details about the charges.
 
 ## Setting the environment
 
@@ -70,3 +78,6 @@ At the time of restore, Make sure the following properties are the same compared
 8. Historic information that is stored in STL and SVL tables is not migrated to or retained in the new cluster.
 9. Amazon S3 log settings are not migrated, so be sure to enable database audit logging on the new cluster.
 10. It is a best practice to make sure the destination cluster is new and empty.
+
+## References 
+[1] https://aws.amazon.com/pricing/services/ 
