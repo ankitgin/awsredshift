@@ -64,7 +64,7 @@ Please also make sure you make the cluster read only during the process i.e. cut
 Note all IAM roles that are associated with your cluster and save the roles to be used in the new cluster.
 Choose the Details pane of your cluster, and note the following configurations:
 - Node Type
-- VPC ID
+* VPC ID
 - VPC security groups
 - Cluster Parameter Group
 - Enhanced VPC Routing
