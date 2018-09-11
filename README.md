@@ -13,7 +13,6 @@ $ python3 get-pip.py --user
 $ pip3.6 install PyGreSQL boto3 pytz --user
 ```
 
-
 2. Clone the repository using the following command:
 ```sh
 git clone https://github.com/#####PATH########
@@ -60,11 +59,11 @@ Please also make sure you make the cluster read only during the process i.e. cut
 
 ## Running the script
 
-1. Select your Amazon Redshift cluster, and choose Manage IAM Roles.
+### 1. Select your Amazon Redshift cluster, and choose Manage IAM Roles.
 Note all IAM roles that are associated with your cluster and save the roles to be used in the new cluster.
 Choose the Details pane of your cluster, and note the following configurations:
 - Node Type
-* VPC ID
+- VPC ID
 - VPC security groups
 - Cluster Parameter Group
 - Enhanced VPC Routing
@@ -72,7 +71,7 @@ Choose the Details pane of your cluster, and note the following configurations:
 - Port
 - Publicly accessible
  
-2. Post Restore
+### 2. Post Restore
 At the time of restore, Make sure the following properties are the same compared to the source.
 - Node Type
 - Cluster Identifier
@@ -83,8 +82,8 @@ At the time of restore, Make sure the following properties are the same compared
 - Cluster Parameter Group
 - VPC security groups.
  
-3. Associate IAM roles
--Open the Amazon Redshift console, and choose Clusters from the navigation pane.
+### 3. Associate IAM roles
+- Open the Amazon Redshift console, and choose Clusters from the navigation pane.
 - Select the new cluster and choose Manage IAM Roles.
 - From the Available roles, choose the roles associated with the source cluster.
 - Choose Apply changes.
