@@ -1,6 +1,6 @@
 # Redshift Encryptor
 
-This script will help to encrypt an unencrypted Amazon Redshift cluster to an Encrypted cluster. As part of the script, it will copy your database (objects) from an unencrypted cluster Amazon Redshift to an encrypted Amazon Redshift cluster. User will need to create a fresh Amazon Redshift cluster with encryption enabled before executing the script which will be used as the destination. The script also gives an option to use the Simple Notification Service(SNS) to monitor the progress of the script.
+This script will help to encrypt an unencrypted Amazon Redshift cluster to an Encrypted cluster. As part of the script, it will copy your database (objects) from an unencrypted cluster Amazon Redshift to an encrypted Amazon Redshift cluster. The user will need to create a fresh Amazon Redshift cluster with encryption enabled before executing the script which will be used as the destination. The script also gives an option to use the Simple Notification Service(SNS) to monitor the progress of the script.
 
 ## AWS Services involved in the script
 
@@ -16,14 +16,14 @@ As resources of these services will be spun, there might be some additional char
 1. The destination Encrypted cluster should be of higher or same configuration than the source unencrypted cluster.
 2. Only one database can be migrated at a time.
 3. You will need to create an s3 bucket which will be used to unload and copy the cluster data. The S3 bucket should be in the same region as the source.
-##### 4. Please note that passwords cannot be migrated and hence must be reset once the migration is completed. Also, we can not create duplicate users and groups, so before migrating the common users in the destination cluster will be deleted.
+4. Please note that passwords cannot be migrated and hence must be reset once the migration is completed. In the case where the destination cluster is not a new cluster, the script will not create duplicate users and groups, and before migrating starts the users(except the super user) with the same name as in the source cluster will be removed from the destination cluster. This is to avoid any collisions in the migration process.
 5. Make sure no user in source cluster except master user has the same name as a master user of the destination cluster.
-6. Master user from source will not be copied to the destination as the destination will have its own master user. Also, uperuser will not be migrated.
+6. Master user from source will not be copied to the destination as the destination will have its own master user. Also, the superuser will not be migrated.
 7. Historic information that is stored in STL and SVL tables is not migrated to or retained in the new cluster.
 8. Amazon S3 log settings are not migrated, so be sure to enable database audit logging on the new cluster.
 
 
-## Setting the environment
+## Setting up the environment
 
 1. Please run the following commands in terminal to install python3 and the necessary dependencies in order to run the script:
 ```sh
