@@ -18,6 +18,11 @@ This script will help you to run your Redshift cluster in specific hours of the 
 As resources of these services will be spun, there might be some additional charges for using these services. Please refer the documentation [1] for details about the charges.
 
 
+## Workflow
+
+![onDemand Workflow](onDemandFlow.png)
+
+
 ## Running the script
 
 1. Please run the following commands in terminal to install the necessary python modules in order to run the script:
