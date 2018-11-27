@@ -2,9 +2,7 @@
 
 This CloudFormation will help you to run your Redshift cluster in specific hours of the day based on your requirement. As part of this template, at the end of your scheduled window, this will take a backup of the cluster before deleting the cluster and will restore it from the latest backup based on your requirement. It is automated using Amazon Lambda and Amazon Cloudwatch rules. This is a one time schedule operation.
 
-```diff
-- Warning: As a part of this CloudFormation template your specified Redshift cluster will be DELETED and again restored from the latest snapshot at the timeline defined by you.
-```
+:warning: Warning: As a part of this CloudFormation template your specified Redshift cluster will be DELETED and again restored from the latest snapshot at the timeline defined by you.
 
 ## AWS Services involved in the script
 
